@@ -177,7 +177,6 @@ namespace AbstractFactory
     /// <summary>
     /// Класс настройки разрешения экрана win.
     /// </summary>
-    [Serializable]
     public class WinScreen : Screen
     { 
         public void Resol()

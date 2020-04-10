@@ -23,18 +23,63 @@ namespace Lab4
                 if (str == "win")
                 {
                     Inp(new WinFactory());
+                    WinFactory factory = new WinFactory();
+                    // передаем в конструктор тип класса
+                    XmlSerializer formatter = new XmlSerializer(typeof(WinFactory));
+                    File.Delete("Factory.xml");
+                    // получаем поток, куда будем записывать сериализованный объект
+                    using (FileStream fs = new FileStream("Factory.xml", FileMode.OpenOrCreate))
+                    {
+                        formatter.Serialize(fs, factory);
+                    }
+
+                    // десериализация
+                    using (FileStream fs = new FileStream("Factory.xml", FileMode.OpenOrCreate))
+                    {
+                        WinFactory newFactory = (WinFactory)formatter.Deserialize(fs);
+                    }
                 }
                 else
                 {
                     if (str == "mac")
                     {
                         Inp(new MacFactory());
+                        MacFactory factory = new MacFactory();
+                        // передаем в конструктор тип класса
+                        XmlSerializer formatter = new XmlSerializer(typeof(MacFactory));
+                        File.Delete("Factory.xml");
+                        // получаем поток, куда будем записывать сериализованный объект
+                        using (FileStream fs = new FileStream("Factory.xml", FileMode.OpenOrCreate))
+                        {
+                            formatter.Serialize(fs, factory);
+                        }
+
+                        // десериализация
+                        using (FileStream fs = new FileStream("Factory.xml", FileMode.OpenOrCreate))
+                        {
+                            MacFactory newFactory = (MacFactory)formatter.Deserialize(fs);
+                        }
                     }
                     else
                     {
                         if (str == "ubuntu")
                         {
                             Inp(new UbFactory());
+                            UbFactory factory = new UbFactory();
+                            // передаем в конструктор тип класса
+                            XmlSerializer formatter = new XmlSerializer(typeof(UbFactory));
+                            File.Delete("Factory.xml");
+                            // получаем поток, куда будем записывать сериализованный объект
+                            using (FileStream fs = new FileStream("Factory.xml", FileMode.OpenOrCreate))
+                            {
+                                formatter.Serialize(fs, factory);
+                            }
+
+                            // десериализация
+                            using (FileStream fs = new FileStream("Factory.xml", FileMode.OpenOrCreate))
+                            {
+                                UbFactory newFactory = (UbFactory)formatter.Deserialize(fs);
+                            }
                         }
                         else
                         {
@@ -72,7 +117,7 @@ namespace Lab4
             BackMod.CustBackMod();
             LoadScreen.CustLoadScreen();
             Safe.CustSafety();
-            Inter.CustInterf(); 
+            Inter.CustInterf();  
         }
 
     }
